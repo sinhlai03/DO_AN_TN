@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Minimum height for fill-viewport scroll layouts on small screens -->
+    <dimen name="screen_min_height">600dp</dimen>
+
+    <!-- Banner height scales down on small screens -->
+    <dimen name="banner_height">180dp</dimen>
+
+    <!-- Product detail image height -->
+    <dimen name="product_image_height">240dp</dimen>
+</resources>

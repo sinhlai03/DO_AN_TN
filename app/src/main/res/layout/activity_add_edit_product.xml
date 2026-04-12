@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/blue_surface">
+
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar_add_product" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/bg_gradient_blue" app:titleTextColor="@color/white" app:navigationIconTint="@color/white" />
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+
+            <!-- Image Preview -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ảnh sản phẩm" android:textColor="@color/text_primary" android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="8dp" />
+
+            <FrameLayout android:layout_width="match_parent" android:layout_height="180dp" android:background="@drawable/bg_input_field" android:layout_marginBottom="14dp" android:clickable="true" android:focusable="true" android:id="@+id/img_product_preview_wrapper">
+
+                <ImageView android:id="@+id/img_product_preview" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:contentDescription="Ảnh sản phẩm" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:text="Nhấn để chọn ảnh" android:textColor="@color/text_hint" android:textSize="14sp" android:id="@+id/tv_pick_image_hint" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_image_pick_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:layout_marginBottom="10dp"
+                android:text="Chưa chọn ảnh - có thể chọn tối đa 5 ảnh"
+                android:textColor="@color/text_hint"
+                android:textSize="12sp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/layout_image_thumbnails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+
+            <!-- Name -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tên sản phẩm *" android:textColor="@color/text_primary" android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="6dp" />
+            <EditText android:id="@+id/edt_product_name" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/bg_input_field" android:hint="Nike Air Max 270" android:textSize="14sp" android:paddingStart="12dp" android:paddingEnd="12dp" android:inputType="text" android:layout_marginBottom="14dp" />
+
+            <!-- Price -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Giá (VND) *" android:textColor="@color/text_primary" android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="6dp" />
+            <EditText android:id="@+id/edt_product_price" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/bg_input_field" android:hint="1500000" android:textSize="14sp" android:paddingStart="12dp" android:paddingEnd="12dp" android:inputType="numberDecimal" android:layout_marginBottom="14dp" />
+
+            <!-- Discount -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Giảm giá (%) - để 0 nếu không giảm" android:textColor="@color/text_primary" android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="6dp" />
+            <EditText android:id="@+id/edt_product_discount" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/bg_input_field" android:hint="0" android:textSize="14sp" android:paddingStart="12dp" android:paddingEnd="12dp" android:inputType="number" android:layout_marginBottom="14dp" />
+
+            <!-- Sale End Time -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Thời gian kết thúc giảm giá" android:textColor="@color/text_primary" android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="6dp" />
+            <TextView android:id="@+id/tv_sale_end_time" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/bg_input_field" android:hint="Bấm để chọn ngày giờ" android:textSize="14sp" android:paddingStart="12dp" android:paddingEnd="12dp" android:gravity="center_vertical" android:clickable="true" android:focusable="true" android:layout_marginBottom="14dp" />
+            <!-- Category -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Danh mục *" android:textColor="@color/text_primary" android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="6dp" />
+            <Spinner android:id="@+id/spinner_category" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/bg_input_field" android:paddingStart="12dp" android:paddingEnd="12dp" android:layout_marginBottom="14dp" android:spinnerMode="dropdown" />
+
+            <!-- Stock -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tồn kho *" android:textColor="@color/text_primary" android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="6dp" />
+            <EditText android:id="@+id/edt_product_stock" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/bg_input_field" android:hint="100" android:textSize="14sp" android:paddingStart="12dp" android:paddingEnd="12dp" android:inputType="number" android:layout_marginBottom="14dp" />
+
+            <!-- Sizes -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Size có sẵn" android:textColor="@color/text_primary" android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_sizes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:chipSpacingHorizontal="6dp"
+                app:chipSpacingVertical="4dp"
+                app:selectionRequired="false"
+                app:singleLine="false">
+
+                <com.google.android.material.chip.Chip android:id="@+id/chip_size_36" style="@style/Widget.MaterialComponents.Chip.Filter" android:layout_width="wrap_content" android:layout_height="36dp" android:text="36" android:textSize="13sp" android:checkable="true" />
+                <com.google.android.material.chip.Chip android:id="@+id/chip_size_37" style="@style/Widget.MaterialComponents.Chip.Filter" android:layout_width="wrap_content" android:layout_height="36dp" android:text="37" android:textSize="13sp" android:checkable="true" />
+                <com.google.android.material.chip.Chip android:id="@+id/chip_size_38" style="@style/Widget.MaterialComponents.Chip.Filter" android:layout_width="wrap_content" android:layout_height="36dp" android:text="38" android:textSize="13sp" android:checkable="true" />
+                <com.google.android.material.chip.Chip android:id="@+id/chip_size_39" style="@style/Widget.MaterialComponents.Chip.Filter" android:layout_width="wrap_content" android:layout_height="36dp" android:text="39" android:textSize="13sp" android:checkable="true" />
+                <com.google.android.material.chip.Chip android:id="@+id/chip_size_40" style="@style/Widget.MaterialComponents.Chip.Filter" android:layout_width="wrap_content" android:layout_height="36dp" android:text="40" android:textSize="13sp" android:checkable="true" />
+                <com.google.android.material.chip.Chip android:id="@+id/chip_size_41" style="@style/Widget.MaterialComponents.Chip.Filter" android:layout_width="wrap_content" android:layout_height="36dp" android:text="41" android:textSize="13sp" android:checkable="true" />
+                <com.google.android.material.chip.Chip android:id="@+id/chip_size_42" style="@style/Widget.MaterialComponents.Chip.Filter" android:layout_width="wrap_content" android:layout_height="36dp" android:text="42" android:textSize="13sp" android:checkable="true" />
+                <com.google.android.material.chip.Chip android:id="@+id/chip_size_43" style="@style/Widget.MaterialComponents.Chip.Filter" android:layout_width="wrap_content" android:layout_height="36dp" android:text="43" android:textSize="13sp" android:checkable="true" />
+                <com.google.android.material.chip.Chip android:id="@+id/chip_size_44" style="@style/Widget.MaterialComponents.Chip.Filter" android:layout_width="wrap_content" android:layout_height="36dp" android:text="44" android:textSize="13sp" android:checkable="true" />
+                <com.google.android.material.chip.Chip android:id="@+id/chip_size_45" style="@style/Widget.MaterialComponents.Chip.Filter" android:layout_width="wrap_content" android:layout_height="36dp" android:text="45" android:textSize="13sp" android:checkable="true" />
+                <com.google.android.material.chip.Chip android:id="@+id/chip_size_46" style="@style/Widget.MaterialComponents.Chip.Filter" android:layout_width="wrap_content" android:layout_height="36dp" android:text="46" android:textSize="13sp" android:checkable="true" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                android:id="@+id/tv_size_stock_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-4dp"
+                android:layout_marginBottom="8dp"
+                android:text="Nếu có nhiều size, hãy nhập tồn kho cho từng size để hệ thống chặn bán vượt tồn chuẩn hơn."
+                android:textColor="@color/text_hint"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/layout_size_stock_inputs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:orientation="vertical" />
+
+
+
+
+            <!-- Description -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mô tả" android:textColor="@color/text_primary" android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="6dp" />
+            <EditText android:id="@+id/edt_product_description" android:layout_width="match_parent" android:layout_height="100dp" android:background="@drawable/bg_input_field" android:hint="Mô tả chi tiết sản phẩm..." android:textSize="14sp" android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingTop="10dp" android:inputType="textMultiLine" android:gravity="top" android:layout_marginBottom="24dp" />
+
+            <!-- Save Button -->
+            <TextView android:id="@+id/btn_save_product" android:layout_width="match_parent" android:layout_height="50dp" android:text="Lưu sản phẩm" android:textColor="@color/white" android:textSize="15sp" android:textStyle="bold" android:gravity="center" android:background="@drawable/bg_gradient_blue" android:clickable="true" android:focusable="true" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

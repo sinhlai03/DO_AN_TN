@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp"
+    android:elevation="2dp"
+    android:gravity="center_vertical">
+
+    <!-- Product image -->
+    <ImageView
+        android:id="@+id/img_cart_product"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/bg_input_field"
+        android:contentDescription="Sản phẩm"
+        android:layout_marginEnd="12dp" />
+
+    <!-- Info -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_cart_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#1A1A2E"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/tv_cart_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blue_primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginTop="2dp" />
+
+        <TextView
+            android:id="@+id/tv_cart_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#6B7280"
+            android:textSize="11sp"
+            android:layout_marginTop="2dp"
+            android:visibility="gone" />
+
+        <!-- Quantity controls -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="6dp">
+
+            <TextView
+                android:id="@+id/btn_decrease"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="−"
+                android:textSize="18sp"
+                android:textColor="@color/blue_primary"
+                android:gravity="center"
+                android:background="@drawable/bg_chip_unselected"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/tv_quantity"
+                android:layout_width="36dp"
+                android:layout_height="30dp"
+                android:text="1"
+                android:textSize="14sp"
+                android:textColor="#1A1A2E"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/btn_increase"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="+"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@drawable/bg_chip_selected"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Delete -->
+    <TextView
+        android:id="@+id/btn_remove"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:text="✕"
+        android:textSize="16sp"
+        android:textColor="#9CA3AF"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true" />
+
+</LinearLayout>

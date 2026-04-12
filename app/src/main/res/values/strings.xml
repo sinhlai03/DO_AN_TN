@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">ShopGiay</string>
+    <string name="app_brand_name">ShopGiay</string>
+    <string name="app_logo_desc">App Logo</string>
+    <string name="back_desc">Go back</string>
+
+    <!-- Login -->
+    <string name="login_subtitle">Phong cách từ đôi chân</string>
+    <string name="login_title">Đăng nhập</string>
+    <string name="login_desc">Chào mừng bạn quay trở lại!</string>
+    <string name="label_email">Email</string>
+    <string name="label_password">Mật khẩu</string>
+    <string name="hint_email">example@email.com</string>
+    <string name="hint_password">Nhập mật khẩu</string>
+    <string name="toggle_password_desc">Toggle password visibility</string>
+    <string name="remember_me">Ghi nhớ</string>
+    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="btn_login">Đăng nhập</string>
+    <string name="or_login_with">Hoặc đăng nhập với</string>
+    <string name="btn_google">Google</string>
+    <string name="google_desc">Login with Google</string>
+    <string name="no_account">Chưa có tài khoản?</string>
+    <string name="btn_sign_up">Đăng ký</string>
+
+    <!-- Forgot Password -->
+    <string name="forgot_title">Quên mật khẩu</string>
+    <string name="forgot_subtitle">Nhập email để nhận link đặt lại mật khẩu</string>
+    <string name="forgot_info">Chúng tôi sẽ gửi một email chứa link đặt lại mật khẩu đến địa chỉ email của bạn.</string>
+    <string name="btn_send_reset">Gửi yêu cầu</string>
+    <string name="remember_password">Nhớ mật khẩu rồi? </string>
+
+    <!-- Register -->
+    <string name="register_title">Tạo tài khoản</string>
+    <string name="register_subtitle">Chuyên giày thể thao &amp; sneaker</string>
+    <string name="label_fullname">Họ và tên</string>
+    <string name="hint_fullname">Nguyễn Văn A</string>
+    <string name="label_phone">Số điện thoại</string>
+    <string name="hint_phone">0912 345 678</string>
+    <string name="label_confirm_password">Xác nhận mật khẩu</string>
+    <string name="hint_confirm_password">Nhập lại mật khẩu</string>
+    <string name="agree_terms">Tôi đồng ý với Điều khoản sử dụng và Chính sách bảo mật</string>
+    <string name="btn_register">Đăng ký</string>
+    <string name="has_account">Đã có tài khoản? </string>
+
+    <!-- Home -->
+    <string name="welcome_home">Chào mừng bạn!</string>
+    <string name="home_subtitle">Bạn đã đăng nhập thành công vào ShopGiay</string>
+    <string name="btn_logout">Đăng xuất</string>
+
+    <!-- Google Sign-In Web Client ID (from Firebase Console) -->
+    <string name="default_web_client_id">364889340924-mavpnelg0nhri7ipdl4o9g4llskfssg5.apps.googleusercontent.com</string>
+</resources>

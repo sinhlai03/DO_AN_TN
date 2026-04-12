@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Primary Blue Palette -->
+    <color name="blue_primary">#FF1565C0</color>
+    <color name="blue_primary_dark">#FF0D47A1</color>
+    <color name="blue_light">#FF42A5F5</color>
+    <color name="blue_accent">#FF2196F3</color>
+    <color name="blue_surface">#FFE3F2FD</color>
+
+    <!-- Gradient -->
+    <color name="gradient_start">#FF0D47A1</color>
+    <color name="gradient_center">#FF1565C0</color>
+    <color name="gradient_end">#FF42A5F5</color>
+
+    <!-- Text -->
+    <color name="text_primary">#FF1A1A2E</color>
+    <color name="text_secondary">#FF6B7280</color>
+    <color name="text_hint">#FF9CA3AF</color>
+    <color name="text_on_primary">#FFFFFFFF</color>
+
+    <!-- Input -->
+    <color name="input_background">#FFF0F7FF</color>
+    <color name="input_stroke">#FFD1E3F8</color>
+    <color name="input_stroke_focused">#FF1565C0</color>
+
+    <!-- Misc -->
+    <color name="divider">#FFE5E7EB</color>
+    <color name="social_bg">#FFF8FAFC</color>
+    <color name="social_stroke">#FFE2E8F0</color>
+</resources>

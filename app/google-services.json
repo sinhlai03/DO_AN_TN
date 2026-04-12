@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "364889340924",
+    "project_id": "shopgiay-84bd5",
+    "storage_bucket": "shopgiay-84bd5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364889340924:android:7e8408fedf75fb7cc4d079",
+        "android_client_info": {
+          "package_name": "com.example.appbangiay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "364889340924-f3j0arg3k8ajejcdr0kk1o48ccojd61h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appbangiay",
+            "certificate_hash": "1b088d1e33f550b0cdfc8b46b2baaf90733beca6"
+          }
+        },
+        {
+          "client_id": "364889340924-hdb1ibtkrrk32af0iid9jkqhau3iq835.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appbangiay",
+            "certificate_hash": "23b7c172179307fcf0c7ddbdcaca80e7e676df94"
+          }
+        },
+        {
+          "client_id": "364889340924-mavpnelg0nhri7ipdl4o9g4llskfssg5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAViCEc5seN7phUrDLhkAFQA5fPXXX2C5Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "364889340924-mavpnelg0nhri7ipdl4o9g4llskfssg5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

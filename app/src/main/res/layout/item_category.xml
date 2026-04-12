@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="10dp"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <!-- Icon circle -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_category_icon"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="#F0F4FF"
+        android:layout_marginBottom="4dp">
+
+        <ImageView
+            android:id="@+id/img_category_icon"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_nav_product"
+            android:contentDescription="Category" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Category name -->
+    <TextView
+        android:id="@+id/tv_category_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="11sp"
+        android:textColor="#555"
+        android:maxLines="1"
+        android:ellipsize="end" />
+</LinearLayout>

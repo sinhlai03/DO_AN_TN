@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- On small screens, reduce min height so fill-viewport doesn't force overflow -->
+    <dimen name="screen_min_height">500dp</dimen>
+
+    <!-- Banner shorter on small screens -->
+    <dimen name="banner_height">150dp</dimen>
+
+    <!-- Product image shorter on small screens -->
+    <dimen name="product_image_height">200dp</dimen>
+</resources>
