@@ -101,7 +101,7 @@ Phân quyền (Authorization)
 Mã hoá mật khẩu
 
 📈 Hướng phát triển
-Tích hợp thanh toán online (VNPay, MoMo)
+Tích hợp thanh toán online  QR (VNPay, MoMo)
 Nâng cấp chatbot AI thông minh hơn
 Mobile App (Android/iOS)
 Gợi ý sản phẩm bằng Machine Learning
