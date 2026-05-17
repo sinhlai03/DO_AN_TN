@@ -1,7 +1,7 @@
 package com.example.appbangiay.chat;
 
-import android.animation.ObjectAnimator;
 import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
@@ -34,7 +34,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -71,22 +70,20 @@ public class ChatActivity extends AppCompatActivity {
     private static final String ACTION_CHANGE_SIZE = "change_size";
 
     private static final double[][] GENERIC_SIZE_CHART = {
-            {22.5, 36.0},
-            {23.0, 36.5},
+            {22.5, 36},
+            {23.0, 37},
             {23.5, 37.5},
-            {24.0, 38.5},
-            {24.5, 39.0},
-            {25.0, 40.0},
-            {25.5, 40.5},
-            {26.0, 41.0},
-            {26.5, 42.0},
-            {27.0, 42.5},
-            {27.5, 43.0},
-            {28.0, 44.0},
-            {28.5, 44.5},
-            {29.0, 45.0},
-            {29.5, 45.5},
-            {30.0, 46.0}
+            {24.0, 38},
+            {24.5, 39},
+            {25.0, 40},
+            {25.5, 41},
+            {26.0, 42},
+            {26.5, 42.5},
+            {27.0, 43},
+            {27.5, 44},
+            {28.0, 44.5},
+            {28.5, 45},
+            {29.0, 46}
     };
 
     private static final double[][] NIKE_SIZE_CHART = {

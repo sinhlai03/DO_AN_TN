@@ -23,8 +23,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class DashboardFragment extends Fragment {
 
@@ -48,7 +50,9 @@ public class DashboardFragment extends Fragment {
     private int totalProducts = 0, totalOrders = 0, totalCustomers = 0;
     private double totalRevenue = 0;
     private int totalStock = 0;
-
+    private int totalSoldProducts = 0;
+    private int totalBuyCustomers = 0;
+    private Set<String> customerSet = new HashSet<>();
     // Cache all orders for filtering
     private List<DocumentSnapshot> allOrders = new ArrayList<>();
 
@@ -226,75 +230,184 @@ public class DashboardFragment extends Fragment {
     }
 
     // ==================== FILTER & DISPLAY ====================
-
     private void applyFilter() {
+
         totalOrders = 0;
         totalRevenue = 0;
-
+        totalSoldProducts = 0;
+        customerSet.clear();
         Map<String, Double> categoryRevenue = new HashMap<>();
 
         for (DocumentSnapshot doc : allOrders) {
-            // Check if order matches the filter
+
+            // Check filter
             if (!matchesFilter(doc)) continue;
 
             totalOrders++;
 
             String status = doc.getString("status");
-            Double amount = doc.getDouble("totalAmount");
-            if (amount == null || amount == 0) amount = doc.getDouble("total");
 
-            if ("done".equals(status) && amount != null) {
-                totalRevenue += amount;
+            Double amount = doc.getDouble("totalAmount");
+            if (amount == null || amount == 0) {
+                amount = doc.getDouble("total");
             }
 
-            // Aggregate by items categories
-            List<Map<String, Object>> items = (List<Map<String, Object>>) doc.get("items");
-            if (items != null && amount != null && amount > 0) {
-                for (Map<String, Object> item : items) {
-                    String name = (String) item.get("name");
-                    Object subtotalObj = item.get("subtotal");
-                    double itemSub = 0;
-                    if (subtotalObj instanceof Number) itemSub = ((Number) subtotalObj).doubleValue();
+            // ==============================
+            // ONLY DONE ORDERS COUNT REVENUE
+            // ==============================
 
-                    String category = "Khác";
-                    if (name != null && !name.isEmpty()) {
-                        String[] parts = name.split(" ");
-                        category = parts[0];
-                    }
+            if (!"done".equals(status)
+                    || amount == null
+                    || amount <= 0) {
+                continue;
+            }
 
-                    categoryRevenue.merge(category, itemSub, Double::sum);
+
+
+            // Total revenue
+            totalRevenue += amount;
+
+            //Customers buy
+            String userId = doc.getString("userId");
+            if (userId != null) {
+                customerSet.add(userId);
+            }
+            // ==============================
+            // CATEGORY REVENUE
+            // ==============================
+
+            List<Map<String, Object>> items =
+                    (List<Map<String, Object>>) doc.get("items");
+
+            if (items == null || items.isEmpty()) continue;
+
+            // Calculate subtotal of all items
+            double totalSubtotal = 0;
+
+            for (Map<String, Object> item : items) {
+
+                Object subtotalObj = item.get("subtotal");
+
+                if (subtotalObj instanceof Number) {
+                    totalSubtotal += ((Number) subtotalObj).doubleValue();
                 }
+            }
+            //SO luong giay ban duoc
+            for (Map<String,Object> item :items){
+                Object qtyObj = item.get("quantity");
+
+                int qty = 1;
+
+              if (qtyObj instanceof Number) {
+                   qty = ((Number) qtyObj).intValue();
+                }
+
+                totalSoldProducts += qty;
+            }
+
+            if (totalSubtotal <= 0) {
+                totalSubtotal = amount;
+            }
+
+            // Split REAL revenue by item ratio
+            for (Map<String, Object> item : items) {
+
+                String name = (String) item.get("name");
+
+                String category = "Khác";
+
+                if (name != null && !name.isEmpty()) {
+
+                    String[] words = name.split(" ");
+
+                    if (words.length >= 2) {
+
+                        category =
+                                words[0] + " "
+                                        + words[1] ;
+
+
+                    } else {
+                        category = name;
+                    }
+                }
+
+                Object subtotalObj = item.get("subtotal");
+
+                double itemSubtotal = 0;
+
+                if (subtotalObj instanceof Number) {
+                    itemSubtotal = ((Number) subtotalObj).doubleValue();
+                }
+
+                // Revenue ratio
+                double realRevenue =
+                        (itemSubtotal / totalSubtotal) * amount;
+
+                categoryRevenue.merge(
+                        category,
+                        realRevenue,
+                        Double::sum
+                );
             }
         }
 
+        // ==============================
+        // UPDATE UI
+        // ==============================
+
         tvTotalOrders.setText(String.valueOf(totalOrders));
         tvTotalRevenue.setText(formatCurrency(totalRevenue));
+        tvTotalProducts.setText(String.valueOf(totalSoldProducts));
+        tvTotalCustomers.setText(String.valueOf(customerSet.size()));
+        // ==============================
+        // DONUT CHART
+        // ==============================
 
-        // Update donut chart
         if (!categoryRevenue.isEmpty()) {
-            List<Map.Entry<String, Double>> entries = new ArrayList<>(categoryRevenue.entrySet());
-            entries.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
+
+            List<Map.Entry<String, Double>> entries =
+                    new ArrayList<>(categoryRevenue.entrySet());
+
+            entries.sort((a, b) ->
+                    Double.compare(b.getValue(), a.getValue()));
 
             List<String> labels = new ArrayList<>();
             List<Float> values = new ArrayList<>();
+
             double others = 0;
 
             for (int i = 0; i < entries.size(); i++) {
+
                 if (i < 5) {
+
                     labels.add(entries.get(i).getKey());
-                    values.add(entries.get(i).getValue().floatValue());
+
+                    values.add(
+                            entries.get(i)
+                                    .getValue()
+                                    .floatValue()
+                    );
+
                 } else {
+
                     others += entries.get(i).getValue();
                 }
             }
+
             if (others > 0) {
                 labels.add("Khác");
                 values.add((float) others);
             }
 
             chartDonut.setData(labels, values);
+
         } else {
-            chartDonut.setData(new ArrayList<>(), new ArrayList<>());
+
+            chartDonut.setData(
+                    new ArrayList<>(),
+                    new ArrayList<>()
+            );
         }
 
         tryUpdateBar();
@@ -356,7 +469,7 @@ public class DashboardFragment extends Fragment {
                 .get()
                 .addOnSuccessListener(snap -> {
                     totalCustomers = snap.size();
-                    tvTotalCustomers.setText(String.valueOf(totalCustomers));
+                    //tvTotalCustomers.setText(String.valueOf(totalCustomers));
 
                     dataReadyCount++;
                     if (dataReadyCount >= 3) tryUpdateBar();
@@ -371,16 +484,20 @@ public class DashboardFragment extends Fragment {
         List<String> displayVals = new ArrayList<>();
 
         barLabels.add("Sản phẩm");
-        barValues.add((float) totalProducts);
-        displayVals.add(String.valueOf(totalProducts));
+        //barValues.add((float) totalProducts);
+       // displayVals.add(String.valueOf(totalProducts));
+        barValues.add((float) totalSoldProducts);
+        displayVals.add(String.valueOf(totalSoldProducts));
 
         barLabels.add("Đơn hàng");
         barValues.add((float) totalOrders);
         displayVals.add(String.valueOf(totalOrders));
 
         barLabels.add("Khách hàng");
-        barValues.add((float) totalCustomers);
-        displayVals.add(String.valueOf(totalCustomers));
+        //barValues.add((float) totalCustomers);
+        //displayVals.add(String.valueOf(totalCustomers));
+        barValues.add((float) customerSet.size());
+        displayVals.add(String.valueOf(customerSet.size()));
 
         barLabels.add("Doanh thu");
         barValues.add((float) totalRevenue);

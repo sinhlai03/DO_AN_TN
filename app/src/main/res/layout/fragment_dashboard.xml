@@ -300,7 +300,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Doanh thu theo danh mục"
+                    android:text="Doanh thu theo sản phẩm"
                     android:textColor="#1A1A2E"
                     android:textSize="15sp"
                     android:textStyle="bold"
